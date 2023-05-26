@@ -1,0 +1,8 @@
+.btn{
+    padding: 10px 50px;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background: greenyellow;;
+}

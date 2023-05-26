@@ -1,0 +1,13 @@
+.header{
+    display: flex;
+    justify-content: space-around;
+    background: yellow;
+    align-items: center;
+
+}
+.header>ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    cursor: pointer;
+}

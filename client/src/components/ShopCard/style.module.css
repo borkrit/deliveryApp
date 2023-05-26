@@ -1,0 +1,23 @@
+.shopping__basket{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.shopping__basket>div{
+    width: 45%;
+    border: 1px solid salmon;
+}
+.shopping__basket > button{
+    margin-inline-start: auto;
+}
+.btn{
+    padding: 10px 50px;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background: greenyellow;;
+}
