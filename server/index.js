@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
-const uri = `mongodb+srv://borkrit:24pagar97@cluster0.in4h82m.mongodb.net/?retryWrites=true&w=majority`
+const uri = ``
 const PORT = process.env.PORT || 3002;
 
 
