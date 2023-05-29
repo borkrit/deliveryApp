@@ -8,7 +8,14 @@ export const Form = ({handelInformation}) => {
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
-    const [address, setAddress] = useState('')
+    const [address, setAddress] = useState('');
+
+    // const[ contact, setContact ] = useState({
+    //     name:'',
+    //     phone:0,
+    //     email:'',
+    //     address:''
+    // })
     
 const handelChange = (value)=>{
     if(value.name === 'name' ){
@@ -23,11 +30,17 @@ const handelChange = (value)=>{
     if(value.name === 'address' ){
         setAddress(value.value);
     }
+    // setContact(prev=> ( {...prev, [value.name] : value.value}))
 
     if(name !== '' & phone !== '' & address.length > 10 & email !== ""){
         if(prompt('All information correct?','yes')){
             console.log('work')
-            handelInformation([name,address,phone,email])
+            handelInformation({
+                'name' : name,
+                'phone' : phone,
+                'email' : email,
+                'address': address
+            })
         }
     }
 }

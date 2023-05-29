@@ -4,27 +4,30 @@ import { Input } from "../../elements/Input";
 import { useStore } from '../../store/store'
 
 
-export const ItemCard = ({price=0, title=''}) => {
+export const ItemCard = ({price=0, title='', quantity}) => {
 
 
     const total  = useStore((state)=>state.updateTotal);
 
+    const updateQuantity  = useStore((state)=>state.updateQuantity);
+
+
     const [cost, setCost] = useState(0);
-    const priceItem=price;
+    // const priceItem=price * quantity;
 
     const handelChange = (value)=>{
-        console.log(value);
         if( value.value >0){
-            let updatePrice = priceItem * value.value;
-            setCost(updatePrice)
+           
+            const priceItem=price * value.value;
+            console.log(priceItem);
+            updateQuantity(title, priceItem, value.value);
             total(priceItem)
-
         }
         
     }
 
     useEffect(()=>{
-        setCost(priceItem)
+        // setCost(priceItem)
     },[]);
 
 
@@ -33,8 +36,9 @@ export const ItemCard = ({price=0, title=''}) => {
    <>
     <img src="" alt="" />
         <p className="title">{title}</p>
-        <p className="price">{cost}</p>
-        <Input name={'how'} type={'number'} handelChange={handelChange} value="1" />
+        <p className="price">price one item {price}</p>
+        {/* <p className="price">price for all this items {cost}</p> */}
+        <Input name={'how'} type={'number'} handelChange={handelChange} value={quantity} />
    </>
   )
 }

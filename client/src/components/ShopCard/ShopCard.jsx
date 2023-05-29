@@ -5,6 +5,7 @@ import { Button } from "../../elements/Button/Button";
 import { useEffect, useState } from "react";
 import { ItemCard } from "../ItemCard/ItemCard";
 import { useStore } from '../../store/store'
+import axios from "axios";
 
 export const ShopCard = () => {
   const [order, setOrder] = useState();
@@ -12,25 +13,40 @@ export const ShopCard = () => {
 
 
   const allProduct = useStore(state => state.basketCard);
-
-
   const totalBasket = useStore(state => state.total);
+  const clearCard = useStore ((state)=> state.clearCard );
 
 
 
 
-  const handelSubmit = () => {
-    console.log("submit"+ order);
+  const handelSubmit = async (e) => {
+    e.preventDefault();
+
+    let orderedProduct =``;
+    allProduct.map(el => {
+      orderedProduct += `Product:${el.Title} , quantity:${el.quantity} ;\n`
+    })
     
+    const createOrder = {
+      ...order, 'orderInfo': orderedProduct
+    }
+    try {
+    await axios.post('http://localhost:3002/order', createOrder )
+    
+      
+    } catch (error) {
+      console.log(error);
+    }
 
+
+    clearCard()
   };
+
+
   const handelInformation =(value)=>{
-    console.log('form')
-    console.log (typeof(value));
     setOrder(value);
   }
 
-  
 
 
 
@@ -45,7 +61,7 @@ export const ShopCard = () => {
           */}
           { allProduct.map(item=>(
             <>
-                <ItemCard price={item.price} title={item.title}   /> 
+                <ItemCard id={item.id} price={item.Price} title={item.Title} quantity={item.quantity}   /> 
             </>
           ))}
         </div>
@@ -58,6 +74,8 @@ export const ShopCard = () => {
           </button>
         </div>
       </div>
+      <button onClick={()=>clearCard()} >Clear All </button>
+
     </>
   );
 };
