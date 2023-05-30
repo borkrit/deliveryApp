@@ -5,10 +5,12 @@ const cors = require('cors')
 const app = express();
 
 const db = mysql.createConnection({
-    host:process.env.DB_HOST || 'localhost',
-    user:process.env.DB_USER || 'root',
-    password:process.env.DB_PASSWORD || 'pagarLA24041997',
-    database:process.env.DB_NAME || 'deliveryApp'
+    host: 'containers-us-west-130.railway.app',
+    user: 'root',
+    password:'bZXwxlmnYg5TcbMv5Vrp',
+    database: 'railway',
+    port: 6044
+    
 }) 
 
 
@@ -21,6 +23,7 @@ app.get('/restaurants', (req, res)=>{
     const q = 'SELECT * FROM restaurants';
 
     db.query(q, (err, data)=>{
+
         if(err) return res.json(err);
 
         return res.json(data)
