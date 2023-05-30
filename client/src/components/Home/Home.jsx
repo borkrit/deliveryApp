@@ -30,7 +30,7 @@ export const Home = () => {
   useEffect(()=>{
     const fetchRest = async ()=>{
       try {
-        const res = await axios('http://localhost:3002/restaurants');
+        const res = await axios('https://deliveryapp-r062.onrender.com/restaurants');
         setRestaurants(res.data)
       } catch (error) {
         console.log(error)
@@ -39,7 +39,7 @@ export const Home = () => {
 
     const fetchProduct = async ()=>{
       try {
-        const res = await axios('http://localhost:3002/menu');
+        const res = await axios('https://deliveryapp-r062.onrender.com/menu');
         setMenu(res.data);
       } catch (error) {
         console.log(error)

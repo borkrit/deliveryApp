@@ -31,7 +31,7 @@ export const ShopCard = () => {
       ...order, 'orderInfo': JSON.stringify(allProduct), 'total':totalBasket
     }
     try {
-    await axios.post('http://localhost:3002/order', createOrder )
+    await axios.post('https://deliveryapp-r062.onrender.com/order', createOrder )
     
       
     } catch (error) {

@@ -17,7 +17,7 @@ const History = () => {
   const handelHistory = async () => {
     try {
       let param = new URLSearchParams(information);
-      const res = await axios.get(`http://localhost:3002/history?${param}`);
+      const res = await axios.get(`https://deliveryapp-r062.onrender.com/history?${param}`);
       setHistory(res.data);
     } catch (error) {
       return error;
