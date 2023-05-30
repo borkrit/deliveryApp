@@ -20,14 +20,14 @@
 
 
 .category{
-    background: yellow;
+    background:rgb(246,235,132);
     padding: 5px 20px ;
     cursor: pointer;
 }
 
 
 .category:hover {
-    color: blue;
+    color:  #f00;
 }
 .restaurantDisable{
     background: #454444;
@@ -47,7 +47,7 @@
     cursor: none;
 }
 .active{
-    background: red;
+    background: salmon;
 }
 
 .products__list{
