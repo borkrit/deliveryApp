@@ -5,11 +5,11 @@ const cors = require('cors')
 const app = express();
 
 const db = mysql.createConnection({
-    host: 'containers-us-west-130.railway.app',
-    user: 'root',
-    password:'bZXwxlmnYg5TcbMv5Vrp',
-    database: 'railway',
-    port: 6044
+    host: process.env.DB_HOST ,
+    user: process.env.DB_USER ,
+    password:process.env.DB_HOST ,
+    database: process.env.DS_PASSWORD ,
+    port: process.env.DB_PORT 
     
 }) 
 
