@@ -1,0 +1,14 @@
+.popUp{
+    border: 1px solid greenyellow;
+    border-radius: 10px;
+    width: max-content;
+    background: yellowgreen;
+    padding: 20px 10px;
+    width: 300px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}

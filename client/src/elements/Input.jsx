@@ -29,6 +29,8 @@ export const Input = ({ type, name, handelChange, value = "", min, props }) => {
           <label htmlFor={name}>
             {name}
             <input
+
+            
               type={type}
               name={name}
               value={date || value}

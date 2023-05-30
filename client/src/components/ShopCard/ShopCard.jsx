@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 import { ItemCard } from "../ItemCard/ItemCard";
 import { useStore } from '../../store/store'
 import axios from "axios";
+import PopUp from "../PopUp/PopUp";
 
 export const ShopCard = () => {
   const [order, setOrder] = useState();
+  const[showPopUp, setShowPopUp] = useState(false)
 
 
 
@@ -21,7 +23,7 @@ export const ShopCard = () => {
 
   const handelSubmit = async (e) => {
     e.preventDefault();
-
+    setShowPopUp(true);
     // let orderedProduct =``;
     // allProduct.map(el => {
     //   orderedProduct += `Product:${el.Title} , quantity:${el.quantity} ;\n`
@@ -39,7 +41,10 @@ export const ShopCard = () => {
     }
 
 
-    clearCard()
+    clearCard();
+    setTimeout(()=>{
+      setShowPopUp(false);
+    }, 4000)
   };
 
 
@@ -75,6 +80,7 @@ export const ShopCard = () => {
 
         
       </div>
+      {showPopUp ?<PopUp message={'Order sended'} /> :null}
       
 
     </>
