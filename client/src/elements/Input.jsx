@@ -1,29 +1,45 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
-import { useState } from "react"
+import { useState } from "react";
 
-export const Input = ({type, name, handelChange,value='' }) => {
-
-  const [date, setDate] = useState('')
-
-
-
+export const Input = ({ type, name, handelChange, value = "", min, props }) => {
+  const [date, setDate] = useState("");
 
   return (
-    <> 
-        <label htmlFor={name}>{name}</label>
-        <input type={type} 
-        placeholder={`Write your ${name}`}  
-        name={name}
-        value={date || value}
-        onChange={(e)=>{
-          handelChange(e.target)
-          setDate(e.target.value)
-        }
-        }
-
-        />
+    <>
+      {type !== "checkbox" ? (
+        <>
+          
+          <label htmlFor={name}>{name}</label>
+          <input
+            type={type}
+            placeholder={`Write your ${name}`}
+            name={name}
+            min={min || ""}
+            value={date || value}
+            onChange={(e) => {
+              handelChange(e.target);
+              setDate(e.target.value);
+            }}
+          />
+        </>
+      ) : (
+        <>
+          <label htmlFor={name}>
+            {name}
+            <input
+              type={type}
+              name={name}
+              value={date || value}
+              onChange={(e) => {
+                handelChange(e.target);
+                setDate(e.target.value);
+              }}
+            />
+          </label>
+        </>
+      )}
     </>
-  )
-}
+  );
+};

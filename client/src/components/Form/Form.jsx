@@ -18,6 +18,7 @@ export const Form = ({handelInformation}) => {
     // })
     
 const handelChange = (value)=>{
+
     if(value.name === 'name' ){
         setName(value.value);
     }
@@ -32,16 +33,13 @@ const handelChange = (value)=>{
     }
     // setContact(prev=> ( {...prev, [value.name] : value.value}))
 
-    if(name !== '' & phone !== '' & address.length > 10 & email !== ""){
-        if(prompt('All information correct?','yes')){
-            console.log('work')
+    if(name !== '' & phone !== '' & address !== '' & email !== "" & value.checked ){
             handelInformation({
                 'name' : name,
                 'phone' : phone,
                 'email' : email,
                 'address': address
             })
-        }
     }
 }
 
@@ -52,6 +50,8 @@ const handelChange = (value)=>{
             <Input type={'phone'} name={'phone'} handelChange={handelChange}/>
             <Input type={'email'} name={'email'} handelChange={handelChange}/>
             <Input type={'text'} name={'address'} handelChange={handelChange}/>
+
+            <Input type={'checkbox'} name={'Accept data processing'}  handelChange={handelChange}  />
 
         </div>
       

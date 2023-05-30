@@ -8,16 +8,31 @@
 
 .shopping__basket>div{
     width: 45%;
-    border: 1px solid salmon;
+    /* border: 1px solid salmon; */
 }
 .shopping__basket > button{
     margin-inline-start: auto;
 }
 .btn{
     padding: 10px 50px;
-    cursor: pointer;
+    cursor: pointer; 
+    margin-inline: 10px;
 }
+
 
 .btn:hover{
     background: greenyellow;;
+}
+
+.delete:hover{
+    background-color: red;
+}
+.shoppng__list{
+    max-height: 600px;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 5px;
+    
 }

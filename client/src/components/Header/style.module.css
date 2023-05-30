@@ -1,7 +1,7 @@
 .header{
     display: flex;
     justify-content: space-around;
-    background: yellow;
+    background: rgb(246, 235, 132);
     align-items: center;
 
 }

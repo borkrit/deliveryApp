@@ -22,13 +22,13 @@ export const ShopCard = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
 
-    let orderedProduct =``;
-    allProduct.map(el => {
-      orderedProduct += `Product:${el.Title} , quantity:${el.quantity} ;\n`
-    })
+    // let orderedProduct =``;
+    // allProduct.map(el => {
+    //   orderedProduct += `Product:${el.Title} , quantity:${el.quantity} ;\n`
+    // })
     
     const createOrder = {
-      ...order, 'orderInfo': orderedProduct
+      ...order, 'orderInfo': JSON.stringify(allProduct), 'total':totalBasket
     }
     try {
     await axios.post('http://localhost:3002/order', createOrder )
@@ -55,26 +55,27 @@ export const ShopCard = () => {
     <>
       <div className={s.shopping__basket}>
         <Form handelInformation={handelInformation} />
-        <div className="shopping_items">
-          {/* <ItemCard price={20} title={'burger'} />
-          <ItemCard price={10} title={'pasta'}  />
-          */}
+        <div className="shopping">
+          <div className={s.shoppng__list}>
           { allProduct.map(item=>(
             <>
-                <ItemCard id={item.id} price={item.Price} title={item.Title} quantity={item.quantity}   /> 
+                <ItemCard id={item.id} price={item.Price} title={item.Title} quantity={item.quantity}  img={item.img} /> 
             </>
           ))}
+          </div>
+          
+            <div>
+              <p className="price">Total {totalBasket>""?  totalBasket : 0}</p>
+              <button onClick={handelSubmit} className={s.btn}>
+                Send
+              </button>
+              <button className={s.btn + ' ' + s.delete } onClick={()=>clearCard()} >Clear Basket </button>
+          </div>
         </div>
 
-        <div>
-          <p className="price">Total {totalBasket>""?totalBasket : 0}</p>
-          {/* <Button handelSubmit={handelSubmit} >Send</Button> */}
-          <button onClick={handelSubmit} className={s.btn}>
-            Send
-          </button>
-        </div>
+        
       </div>
-      <button onClick={()=>clearCard()} >Clear All </button>
+      
 
     </>
   );

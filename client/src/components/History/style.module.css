@@ -1,0 +1,30 @@
+.historyView{
+    border: 1px solid salmon;
+    height: 700px;
+    width: 100%;
+    margin-top: 20px;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+.ordered__info{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-block: 15px;
+    border-bottom: 1px dotted black;
+}
+
+.ordered__list{
+    display: flex;
+    width: 60%;
+    gap: 20px;
+
+    overflow-x: auto;
+}
+
+.ordered__items{
+    width: 100%;
+}
+.ordered__items img{
+    width: 100%;
+}

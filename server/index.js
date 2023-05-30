@@ -5,10 +5,10 @@ const cors = require('cors')
 const app = express();
 
 const db = mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'YOU PASSWORD',
-    database:'YOU DATABASE NAME '
+    host:process.env.DB_HOST || 'localhost',
+    user:process.env.DB_USER || 'root',
+    password:process.env.DB_PASSWORD || 'pagarLA24041997',
+    database:process.env.DB_NAME || 'deliveryApp'
 }) 
 
 
@@ -43,7 +43,6 @@ app.get('/history', (req, res, next)=>{
     
     const q = `SELECT * FROM Orders WHERE phone LIKE ? AND email LIKE ? `
 
-    console.log(req.query.email);
     let phone= req.query.phone;
     let email = req.query.email;
 
@@ -61,13 +60,14 @@ app.get('/history', (req, res, next)=>{
 })
 
 app.post('/order', (req, res)=>{
-    const q = "INSERT INTO Orders (`name`,`phone`,`email`,`address`,`orderInfo`) VALUES (?)"
+    const q = "INSERT INTO Orders (`name`,`phone`,`email`,`address`,`orderInfo`,`total`) VALUES (?)"
     const value = [
         req.body.name,
         req.body.phone,
         req.body.email,
         req.body.address,
-        req.body.orderInfo
+        req.body.orderInfo,
+        req.body.total
     ]
 
     db.query(q,[value], (err, data)=>{
