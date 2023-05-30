@@ -59,7 +59,7 @@ export const ShopCard = () => {
           <div className={s.shoppng__list}>
           { allProduct.map(item=>(
             <>
-                <ItemCard id={item.id} price={item.Price} title={item.Title} quantity={item.quantity}  img={item.img} /> 
+                <ItemCard key={item.id} id={item.id} price={item.Price} title={item.Title} quantity={item.quantity}  img={item.img} /> 
             </>
           ))}
           </div>

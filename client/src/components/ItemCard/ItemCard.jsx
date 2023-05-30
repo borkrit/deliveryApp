@@ -28,7 +28,7 @@ export const ItemCard = ({price=0, title='', quantity, img, id}) => {
 
   return (
    <>
-    <div className={s.order__item}>
+    <div className={s.order__item} key={id}>
         <button onClick={()=>handelClick(id)} >X</button>
         <p className="title">{title}</p>
             <p className="price">price one item {price}</p>
