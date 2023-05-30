@@ -43,7 +43,7 @@ export const ShopCard = () => {
         setShowPopUp(false);
       }, 4000)
     }else{ 
-      console.log('wowow no datda ');
+      alert( new Error('You dont write your data'));
     }
 
       
