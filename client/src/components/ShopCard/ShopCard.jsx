@@ -23,28 +23,32 @@ export const ShopCard = () => {
 
   const handelSubmit = async (e) => {
     e.preventDefault();
-    setShowPopUp(true);
-    // let orderedProduct =``;
-    // allProduct.map(el => {
-    //   orderedProduct += `Product:${el.Title} , quantity:${el.quantity} ;\n`
-    // })
-    
-    const createOrder = {
-      ...order, 'orderInfo': JSON.stringify(allProduct), 'total':totalBasket
-    }
-    try {
-    await axios.post('https://deliveryapp-r062.onrender.com/order', createOrder )
-    
+   
+    if(order !== undefined){
+      setShowPopUp(true);
+
+      const createOrder = {
+        ...order, 'orderInfo': JSON.stringify(allProduct), 'total':totalBasket
+      }
+      try {
+      await axios.post('https://deliveryapp-r062.onrender.com/order', createOrder )
       
-    } catch (error) {
-      console.log(error);
+        
+      } catch (error) {
+        console.log(error);
+      }
+
+      clearCard();
+      setTimeout(()=>{
+        setShowPopUp(false);
+      }, 4000)
+    }else{ 
+      console.log('wowow no datda ');
     }
 
+      
 
-    clearCard();
-    setTimeout(()=>{
-      setShowPopUp(false);
-    }, 4000)
+
   };
 
 
