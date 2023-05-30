@@ -37,16 +37,16 @@ const History = () => {
       <button onClick={handelHistory}>Check history </button>
 
       <div className={s.historyView}>
-        {history.map((el) => (
+        {history.map((el,id) => (
           <>
-            <div className={s.ordered__info}>
+            <div className={s.ordered__info} key={id}>
 
                 Order id {el.idOrders}
 
               <div className={s.ordered__list}>
-                {JSON.parse(el.orderInfo).map((item) => (
+                {JSON.parse(el.orderInfo).map((item,id) => (
                   <>
-                    <div className={s.ordered__items} >
+                    <div key={id} className={s.ordered__items} >
                       <p className="title">{item.Title}</p>
                       <p className="quantity">
                         {item.quantity} * {item.Price} ={" "}
